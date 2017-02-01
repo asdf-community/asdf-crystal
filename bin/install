@@ -19,7 +19,18 @@ install_crystal(){
     # running this in a subshell
     # we don't want to disturb current working dir
     (
-        tar zxf $source_path -C $install_path --strip-components=1 || exit 1
+        if [ "$install_type" != "version" ]; then
+            tar zxf $source_path -C $install_path --strip-components=1 || exit 1
+            cd $install_path
+            make clean crystal
+
+            if [ $? -ne 0 ]; then
+                rm -rf $install_path
+                exit 1
+            fi
+        else
+            tar zxf $source_path -C $install_path --strip-components=1 || exit 1
+        fi
     )
 }
 
@@ -37,7 +48,11 @@ get_download_file_path() {
     local version=$2
     local tmp_download_dir=$3
 
-    local pkg_name="crystal-${version}-${install_type}.tar.gz"
+    if [ "$install_type" = "version" ]; then
+        local pkg_name="crystal-${version}-${install_type}.tar.gz"
+    else
+        local pkg_name="crystal-${version}.tar.gz"
+    fi
 
     echo "$tmp_download_dir/$pkg_name"
 }
@@ -53,6 +68,8 @@ get_download_url() {
         else
             echo "https://github.com/crystal-lang/crystal/releases/download/${version}/crystal-${version}-1-darwin-x86_64.tar.gz"
         fi
+    else
+        echo "https://github.com/crystal-lang/crystal/archive/${version}.tar.gz"
     fi
 }
 
