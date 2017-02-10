@@ -4,7 +4,11 @@ releases_path=https://api.github.com/repos/crystal-lang/crystal/releases
 
 cmd="curl -s $releases_path"
 
+sort_cmd='sort'
+if sort --help | grep -q -- '-V'; then
+  sort_cmd='sort -V'
+fi
 
 # Fetch all tag names, and get only second column. Then remove all unnecesary characters.
-versions=$(eval $cmd | sed -n 's/.*"tag_name": "\(.*\)",/\1/p' | sort)
+versions=$(eval $cmd | sed -n 's/.*"tag_name": "\(.*\)",/\1/p' | $sort_cmd)
 echo $versions
