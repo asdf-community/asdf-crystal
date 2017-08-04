@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if [ "$CRYSTAL_PATH" = "" ]; then
+  export CRYSTAL_PATH=$ASDF_INSTALL_PATH/src
+fi
