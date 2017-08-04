@@ -1,4 +1,2 @@
 #!/bin/bash
-
-# from https://github.com/rfrancis/asdf-nim/blob/master/bin/list-all
-echo $(git ls-remote -t https://github.com/crystal-lang/crystal.git | awk '{print $2}' | cut -d/ -f3 | grep -v '{}' | sort -t. -n -k2,3)
+echo $(curl -s https://api.github.com/repos/crystal-lang/crystal/releases | sed -n 's/.*"tag_name": "\(.*\)",/\1/p' | sort -t. -n -k2,3)
