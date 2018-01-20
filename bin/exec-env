@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 if [ "$CRYSTAL_PATH" = "" ]; then
-    export CRYSTAL_PATH="lib:$ASDF_INSTALL_PATH/src"
+  export CRYSTAL_PATH="lib:$ASDF_INSTALL_PATH/src:$ASDF_INSTALL_PATH/share/crystal/src"
 fi
