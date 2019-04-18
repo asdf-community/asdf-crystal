@@ -1,2 +1,10 @@
 #!/bin/bash
-echo $(curl -s https://api.github.com/repos/crystal-lang/crystal/releases | sed -n 's/.*"tag_name": "\(.*\)",/\1/p' | sed 'y/v/ /' | sort -t. -n -k2,3)
+
+releases_path="https://api.github.com/repos/crystal-lang/crystal/releases"
+
+curl_cmd="curl -s"
+if [ -n "$GITHUB_TOKEN" ]; then
+    curl_cmd="$curl_cmd -H 'Authorization: token $GITHUB_TOKEN'"
+fi
+
+echo $($curl_cmd $releases_path | sed -n 's/.*\"tag_name\": \"\(.*\)\",/\1/p' | sed 'y/v/ /' | sort -t. -n -k2,3)
