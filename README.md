@@ -5,7 +5,7 @@ Crystal plugin for [asdf](https://github.com/asdf-vm/asdf) version manager
 ## Install
 
 ```
-asdf plugin-add crystal https://github.com/marciogm/asdf-crystal.git
+asdf plugin-add crystal https://github.com/asdf-community/asdf-crystal.git
 ```
 
 ## Use
