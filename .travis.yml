@@ -1,8 +1,0 @@
-language: c
-script: asdf plugin-test crystal https://github.com/marciogm/asdf-crystal.git 'crystal -v'
-before_script:
-  - git clone https://github.com/asdf-vm/asdf.git
-  - . asdf/asdf.sh
-os:
-  - linux
-  - osx

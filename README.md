@@ -1,5 +1,4 @@
 # asdf-crystal
-[![Build Status](https://travis-ci.org/marciogm/asdf-crystal.svg?branch=master)](https://travis-ci.org/marciogm/asdf-crystal)
 
 Crystal plugin for [asdf](https://github.com/asdf-vm/asdf) version manager
 
