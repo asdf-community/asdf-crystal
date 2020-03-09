@@ -1,80 +1,52 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
+fail() {
+  echo -e "\e[31mFail:\e[m $*"
+  exit 1
+}
+
 install_crystal() {
   local install_type=$1
   local version=$2
   local install_path=$3
 
-  if [ "$TMPDIR" = "" ]; then
-    local tmp_download_dir=$(mktemp -d -t crystal_build_XXXXXX)
-  else
-    local tmp_download_dir=$TMPDIR
+  if [ "$install_type" != "version" ]; then
+    fail "asdf-crystal supports release installs only"
   fi
 
-  # path to the tar file
-  local source_path=$(get_download_file_path $install_type $version $tmp_download_dir)
-  echo $source_path
-  download_source_file $install_type $version $source_path
+  local platform
 
-  # running this in a subshell
-  # we don't want to disturb current working dir
+  case "$OSTYPE" in
+    darwin*) platform="darwin" ;;
+    linux*) platform="linux" ;;
+    *) fail "Unsupported platform" ;;
+  esac
+
+  local architecture
+
+  case "$(uname -m)" in
+    x86_64) architecture="x86_64" ;;
+    i686) architecture="i686" ;;
+    *) fail "Unsupported architecture" ;;
+  esac
+
+  local download_url="https://github.com/crystal-lang/crystal/releases/download/${version}/crystal-${version}-1-${platform}-${architecture}.tar.gz"
+  local tmp_download_dir
+  tmp_download_dir=$(mktemp -d -t crystal_tmp_XXXXXX)
+  local source_path="${tmp_download_dir}/crystal.tar.gz"
+
   (
-    if [ "$install_type" != "version" ]; then
-      tar zxf $source_path -C $install_path --strip-components=1 || exit 1
-      cd $install_path
-      make clean crystal
-
-      if [ $? -ne 0 ]; then
-        rm -rf $install_path
-        exit 1
-      fi
-    else
-      tar zxf $source_path -C $install_path --strip-components=1 || exit 1
-    fi
+    echo "∗ Downloading and installing opam..."
+    curl --silent --location --create-dirs --output "$source_path" "$download_url" || fail "Could not download Crystal $version"
+    tar zxf "$source_path" -C "$install_path" --strip-components=1
+    rm -rf "$tmp_download_dir"
+    echo "The installation was successful!"
+  ) || (
+    rm -rf "$install_path"
+    fail "An error occurred"
   )
 }
 
-download_source_file() {
-  local install_type=$1
-  local version=$2
-  local download_path=$3
-  local download_url=$(get_download_url $install_type $version)
-
-  curl -Lo $download_path -C - $download_url
-}
-
-get_download_file_path() {
-  local install_type=$1
-  local version=$2
-  local tmp_download_dir=$3
-
-  if [ "$install_type" = "version" ]; then
-    local pkg_name="crystal-${version}-${install_type}.tar.gz"
-  else
-    local pkg_name="crystal-${version}.tar.gz"
-  fi
-
-  echo "$tmp_download_dir/$pkg_name"
-}
-
-get_download_url() {
-  local install_type=$1
-  local version=$2
-  local operating_system=""
-  local arch=""
-
-  [ "Linux" = "$(uname)" ] && operating_system="linux" || operating_system="darwin"
-  [ "x86_64" = "$(uname -m)" ] && arch="x86_64" || arch="i686"
-
-  local grep_cmd="grep -o https.*crystal-${version//\./\\.}.*${operating_system}.*${arch}.*tar.gz"
-  local curl_cmd="curl -s https://api.github.com/repos/crystal-lang/crystal/releases"
-
-  if [ "$install_type" = "version" ]; then
-    res=$(eval $curl_cmd | $grep_cmd)
-    echo $res
-  else
-    echo "https://github.com/crystal-lang/crystal/archive/${version}.tar.gz"
-  fi
-}
-
-install_crystal $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
+install_crystal "$ASDF_INSTALL_TYPE" "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
