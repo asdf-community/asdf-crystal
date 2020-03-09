@@ -45,6 +45,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "epergo",
+      "name": "Eloy Pérez",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6479554?v=4",
+      "profile": "https://github.com/epergo",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
