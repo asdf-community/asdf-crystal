@@ -54,6 +54,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "cbortz",
+      "name": "Chet Bortz",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/184307?v=4",
+      "profile": "https://github.com/cbortz",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
