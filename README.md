@@ -46,12 +46,12 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/Stanislav-Lapata"><img src="https://avatars1.githubusercontent.com/u/12072329?v=4" width="100px;" alt=""/><br /><sub><b>Stanislav Lapata</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=Stanislav-Lapata" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/jeffhertzler"><img src="https://avatars1.githubusercontent.com/u/223578?v=4" width="100px;" alt=""/><br /><sub><b>Jeff Hertzler</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=jeffhertzler" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/epergo"><img src="https://avatars0.githubusercontent.com/u/6479554?v=4" width="100px;" alt=""/><br /><sub><b>Eloy Pérez</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=epergo" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/cbortz"><img src="https://avatars2.githubusercontent.com/u/184307?v=4" width="100px;" alt=""/><br /><sub><b>Chet Bortz</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=cbortz" title="Code">💻</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the
