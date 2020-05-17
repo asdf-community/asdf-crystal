@@ -5,7 +5,7 @@
 <hr />
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/asdf-community/asdf-crystal/Main%20workflow?style=flat-square)](https://github.com/asdf-community/asdf-crystal/actions)
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![License](https://img.shields.io/github/license/asdf-community/asdf-crystal?style=flat-square&color=brightgreen)](https://github.com/asdf-community/asdf-crystal/blob/master/LICENSE)
 
@@ -46,12 +46,12 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/Stanislav-Lapata"><img src="https://avatars1.githubusercontent.com/u/12072329?v=4" width="100px;" alt=""/><br /><sub><b>Stanislav Lapata</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=Stanislav-Lapata" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/jeffhertzler"><img src="https://avatars1.githubusercontent.com/u/223578?v=4" width="100px;" alt=""/><br /><sub><b>Jeff Hertzler</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=jeffhertzler" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/epergo"><img src="https://avatars0.githubusercontent.com/u/6479554?v=4" width="100px;" alt=""/><br /><sub><b>Eloy Pérez</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=epergo" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/cbortz"><img src="https://avatars2.githubusercontent.com/u/184307?v=4" width="100px;" alt=""/><br /><sub><b>Chet Bortz</b></sub></a><br /><a href="https://github.com/asdf-community/asdf-crystal/commits?author=cbortz" title="Code">💻</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the
