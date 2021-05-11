@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+print_deps() {
+  local platform
+
+  case "$OSTYPE" in
+    darwin*) platform="darwin" ;;
+    linux*) platform="linux" ;;
+  esac
+
+  if [ "$platform" == "darwin" ]; then
+    echo "DEPENDENCIES"
+    echo "libyaml (via Homebrew)"
+  fi
+}
+
+print_deps

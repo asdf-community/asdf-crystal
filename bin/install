@@ -24,6 +24,16 @@ install_crystal() {
     *) fail "Unsupported platform" ;;
   esac
 
+  if [ "$platform" == "darwin" ]; then
+    if ! type brew >/dev/null 2>&1; then
+      fail "pre-built releases of Crystal depend on Homebrew. Visit https://brew.sh to install it."
+    fi
+
+    if ! [ -d "$(brew --prefix libyaml 2>/dev/null || true)" ]; then
+      fail "libyaml from Homebrew is required, run 'brew install libyaml'"
+    fi
+  fi
+
   local architecture
 
   case "$(uname -m)" in
