@@ -42,6 +42,16 @@ install_crystal() {
     curl --silent --fail --location --create-dirs --output "$source_path" "$download_url" || fail "Could not download Crystal $version"
     tar zxf "$source_path" -C "$install_path" --strip-components=1
     rm -rf "$tmp_download_dir"
+
+    if [ "$platform" == "darwin" ]; then
+      local libyaml_path
+      libyaml_path=$(otool -L "$install_path/embedded/bin/shards" | grep libyaml | cut -d " " -f1 | tr -d "\t")
+
+      if [ "$libyaml_path" == "/opt/crystal/embedded/lib/libyaml-0.2.dylib" ]; then
+        install_name_tool -change "$libyaml_path" "$install_path/embedded/lib/libyaml-0.2.dylib" "$install_path/embedded/bin/shards"
+      fi
+    fi
+
     echo "The installation was successful!"
   ) || (
     rm -rf "$install_path"
