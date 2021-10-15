@@ -15,7 +15,7 @@ install_crystal() {
   while IFS='.' read -ra SEMVER; do
     major=${SEMVER[0]}
     minor=${SEMVER[1]}
-  done <<< "$version";
+  done <<<"$version"
 
   if [ "$install_type" != "version" ]; then
     fail "asdf-crystal supports release installs only"
@@ -24,14 +24,14 @@ install_crystal() {
   local platform
 
   case "$OSTYPE" in
-    darwin*) platform="darwin" ;;
-    linux*) platform="linux" ;;
-    *) fail "Unsupported platform" ;;
+  darwin*) platform="darwin" ;;
+  linux*) platform="linux" ;;
+  *) fail "Unsupported platform" ;;
   esac
 
   architecture="$(uname -m)"
 
-  if [ "$platform" = "darwin" ] && [ "$major" -ge 1 ] && [ "$minor" -ge 2 ] ; then
+  if [ "$platform" = "darwin" ] && [ "$major" -ge 1 ] && [ "$minor" -ge 2 ]; then
     architecture="universal"
   fi
 
