@@ -29,6 +29,7 @@ install_crystal() {
     *) fail "Unsupported platform" ;;
   esac
 
+  local architecture
   architecture="$(uname -m)"
 
   if [ "$platform" = "darwin" ] && [ "$major" -ge 1 ] && [ "$minor" -ge 2 ]; then
