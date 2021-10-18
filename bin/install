@@ -24,9 +24,9 @@ install_crystal() {
   local platform
 
   case "$OSTYPE" in
-  darwin*) platform="darwin" ;;
-  linux*) platform="linux" ;;
-  *) fail "Unsupported platform" ;;
+    darwin*) platform="darwin" ;;
+    linux*) platform="linux" ;;
+    *) fail "Unsupported platform" ;;
   esac
 
   architecture="$(uname -m)"
