@@ -42,7 +42,7 @@ install_crystal() {
   local source_path="${tmp_download_dir}/crystal.tar.gz"
 
   (
-    echo "∗ Downloading and installing Crystal..."
+    echo "* Downloading and installing Crystal..."
     curl --silent --fail --location --create-dirs --output "$source_path" "$download_url" || fail "Could not download Crystal $version for architecture $architecture"
     tar zxf "$source_path" -C "$install_path" --strip-components=1
     rm -rf "$tmp_download_dir"
