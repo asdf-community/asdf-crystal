@@ -3,7 +3,7 @@
 set -eo pipefail
 
 fail() {
-  echo -e "\e[31mFail:\e[m $*"
+  echo -e "\033[31mFail:\033[m $*"
   exit 1
 }
 
