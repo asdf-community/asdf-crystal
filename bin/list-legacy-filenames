@@ -3,3 +3,4 @@
 set -eo pipefail
 
 echo ".crystal-version"
+echo ".crystal-version shard.yml"

@@ -22,10 +22,12 @@ install & manage versions.
 
 ## Useful information
 
-asdf uses the `.tool-versions` for auto-switching between software versions. To
-ease migration, you can have it read `.crystal-version` file to find out what
-version of Crystal should be used. This only works with the exact version. To do
-this, add the following to `~/.asdfrc`:
+asdf uses the `.tool-versions` for auto-switching between software versions.
+If `legacy_verison_file` support is enabled, it can read the crystal version
+from `shard.yml`. To ease migration, it can also read the version from the
+`.crystal-version` file. This only works with the exact version.
+
+To enable `legacy_verison_file` support, add the following to `~/.asdfrc`:
 
 ```
 legacy_version_file = yes
