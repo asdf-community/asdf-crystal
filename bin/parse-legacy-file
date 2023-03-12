@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+get_legacy_version() {
+  current_file="$1"
+  basename="$(basename -- "$current_file")"
+
+  if [ "$basename" == "shard.yml" ]; then
+    CRYSTAL_VERSION="$(grep '^crystal:' "$current_file" |
+      sed 's/crystal:[[:space:]]*//g' |
+      head -1)"
+  elif [ "$basename" == ".crystal-version" ]; then
+    CRYSTAL_VERSION="$(cat "$current_file")"
+  fi
+
+  echo "$CRYSTAL_VERSION"
+}
+
+get_legacy_version "$1"
