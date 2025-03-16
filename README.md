@@ -12,7 +12,7 @@
 ## Installation
 
 ```
-asdf plugin-add crystal https://github.com/asdf-community/asdf-crystal.git
+asdf plugin add crystal https://github.com/asdf-community/asdf-crystal.git
 ```
 
 ## Usage
